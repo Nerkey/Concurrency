@@ -1,4 +1,4 @@
-package com.qu;
+package com.qu.section1;
 
 public class Task implements Runnable {
 

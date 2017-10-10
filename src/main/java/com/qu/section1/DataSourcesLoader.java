@@ -1,7 +1,6 @@
-package com.qu;
+package com.qu.section1;
 
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
 
 public class DataSourcesLoader implements Runnable {
 

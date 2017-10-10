@@ -1,4 +1,4 @@
-package com.qu;
+package com.qu.section1;
 
 import java.io.FileWriter;
 import java.io.PrintWriter;

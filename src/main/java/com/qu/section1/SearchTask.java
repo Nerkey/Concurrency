@@ -1,10 +1,8 @@
-package com.qu;
+package com.qu.section1;
 
 import java.util.Date;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
-
-import static java.lang.Thread.activeCount;
 
 public class SearchTask implements Runnable {
 
