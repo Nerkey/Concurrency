@@ -30,7 +30,12 @@ public class CleanerTask extends Thread {
         do {
             Event e = deque.getLast();
             difference = date.getTime() - e.getDate().getTime();
-            delete = true;
+            if (difference > 10000) {
+                System.out.printf("Cleaner: %s \n", e.getEvent());
+                deque.removeLast();
+                delete = true;
+            }
+
         } while (difference > 10000);
 
         if (delete) {
