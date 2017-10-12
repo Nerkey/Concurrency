@@ -54,7 +54,7 @@ public class PricesInfo {
 
     public void setPrices(double price1, double price2) {
         lock.writeLock().lock();
-        System.out.printf("Writer: Attempt to modify the prices. \n");
+        System.out.printf(Thread.currentThread() + " Writer: Attempt to modify the prices. \n");
         this.price1 = price1;
         this.price2 = price2;
         try {
@@ -63,7 +63,7 @@ public class PricesInfo {
             e.printStackTrace();
         }
 
-        System.out.printf("Writer: Prices have been modified. \n");
+        System.out.printf(Thread.currentThread() + " Writer: Prices have been modified. \n");
         lock.writeLock().unlock();
     }
 
@@ -77,13 +77,19 @@ public class PricesInfo {
             threadsReader[i] = new Thread(readers[i]);
         }
 
-        Writer writer = new Writer(pricesInfo);
-        Thread threadWriter = new Thread(writer);
+        Writer[] writers = new Writer[5];
+        Thread[] threadsWriter = new Thread[5];
+        for (int i = 0; i < 5; i++) {
+            writers[i] = new Writer(pricesInfo);
+            threadsWriter[i] = new Thread(writers[i]);
+        }
 
         for (int i = 0; i < 5; i++) {
             threadsReader[i].start();
         }
-        threadWriter.start();
+        for (int i = 0; i < 5; i++) {
+            threadsWriter[i].start();
+        }
 
     }
 

@@ -27,6 +27,11 @@ public class Job implements Runnable {
 
         for (int i = 0; i < 10; i++) {
             threads[i].start();
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
